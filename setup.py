@@ -70,7 +70,7 @@ def main():
     logger.info("Start install pichuangrc")
     env = enviroment()
     install_rc(env, filename=".gitconfig")
-    #install_rc(env, filename=".vimrc")
+    install_rc(env, filename=".vimrc")
     logger.info("Finish install pichuangrc")
 
 if __name__ == '__main__':
