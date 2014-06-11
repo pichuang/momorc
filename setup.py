@@ -55,7 +55,7 @@ def install_gitconfig(env):
     '''
     if os.path.exists(dst_gitconfig_path) == True:
         if os.path.islink(dst_gitconfig_path) == True:
-            logger.debug(".gitconfig is exists")
+            logger.info(".gitconfig is exists")
             pass
         elif os.path.isfile(dst_gitconfig_path) == True:
             logger.debug(".gitconfig backup")
