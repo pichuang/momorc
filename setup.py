@@ -73,16 +73,15 @@ def install_rc(env, filename):
     '''
     Check file is symbolic link?
     '''
-    if os.path.exists(dst_path) == True:
-        if os.path.islink(dst_path) == True:
-            logger.info("%s is exists" % filename)
-            pass
-        elif os.path.isfile(dst_path) == True:
-            logger.debug("%s backup" % filename)
-            file_backup = dst_path + ".backup"
-            os.rename(dst_path, file_backup)
-        else:
-            logger.debug("%s somthing wrong" % filename)
+    if os.path.islink(dst_path) == True:
+        logger.info("%s is exists" % filename)
+        pass
+    elif os.path.isfile(dst_path) == True:
+        logger.debug("%s backup from %s to %s" % (filename, src_path, dst_path))
+        file_backup = dst_path + ".backup"
+        os.rename(dst_path, file_backup)
+        os.symlink(src_path, dst_path)
+        logger.info("%s install from %s to %s" % (filename, src_path, dst_path))
     else:
         os.symlink(src_path, dst_path)
         logger.info("%s install from %s to %s" % (filename, src_path, dst_path))
@@ -105,6 +104,7 @@ def main():
     git_branch(env)
     install_rc(env, filename=".gitconfig")
     install_rc(env, filename=".vimrc")
+    install_rc(env, filename=".screenrc")
     logger.info("Finish install pichuangrc")
 
 if __name__ == '__main__':

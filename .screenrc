@@ -1,0 +1,43 @@
+vbell off
+vbell_msg "Ding Ding!!"
+bell off
+bell_msg "Bell in window %n^G"
+startup_message off
+caption always "%{wK} %=|%{Wb}%-w%{Yr}%n*%t%{Wb}%+w%{wK}|%= "
+hardstatus alwayslastline "%= %= %{Y}(%H) %{R}%e %{R} %l %{wb} %Y/%m/%d %c"
+#termcapinfo xterm "Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm"
+#termcapinfo xterm-color "Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm"
+#defutf8 on
+#defencoding utf8
+#setenv "SEN" "utf8"
+#setenv "DEN" "big5"
+escape "^AA"
+
+
+bind u encoding utf8 utf8
+bind b encoding big5 utf8
+bind "X" remove
+bind "Q" only
+bind "|" split -v
+bind "-" split
+bind "c" screen
+bind "l" redisplay
+bind "." eval "echo \"source $HOME/.screenrc\"" "source $HOME/.screenrc" 
+bind "h" help
+bind ">" writebuf $HOME/.screen_exchange
+bind "<" readbuf $HOME/.screen_exchange
+
+#check key use "showkey -a"
+
+bindkey "^[[1;5C" next
+bindkey "^[[1;5D" prev
+
+#for mac
+bindkey "^[[5C" next
+bindkey "^[[5D" prev
+
+bindkey "^[[C" next
+bindkey "^[[D" prev
+bindkey "^[x" next
+bindkey "^[z" prev
+
