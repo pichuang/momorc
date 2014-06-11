@@ -40,7 +40,7 @@ class enviroment():
 
     def home_path(self):
         home_path = expanduser("~")
-        logger.debug("home path: %s" % home)
+        logger.debug("home path: %s" % home_path)
         return home_path
 
 def install_gitconfig(env):
@@ -53,13 +53,19 @@ def install_gitconfig(env):
     '''
     Check .gitconfig is symbolic link?
     '''
-    if os.path.exists(dst_gitconfig_path) == True and os.path.isfile(dst_gitconfig_path) == True:
-        logger.debug(".gitconfig backup")
-        gitconfig_backup = dst_gitconfig_path + ".backup"
-        os.rename(dst_gitconfig_path, gitconfig_backup)
-    
-    os.symlink(src_gitconfig_path, dst_gitconfig_path)
-    logger.info(".gitconfig install from %s to %s" % (src_gitconfig_path, dst_gitconfig_path))
+    if os.path.exists(dst_gitconfig_path) == True:
+        if os.path.islink(dst_gitconfig_path) == True:
+            logger.debug(".gitconfig is exists")
+            pass
+        elif os.path.isfile(dst_gitconfig_path) == True:
+            logger.debug(".gitconfig backup")
+            gitconfig_backup = dst_gitconfig_path + ".backup"
+            os.rename(dst_gitconfig_path, gitconfig_backup)
+        else:
+            logger.debug(".gitconfig Somthing wrong")
+    else:
+        os.symlink(src_gitconfig_path, dst_gitconfig_path)
+        logger.info(".gitconfig install from %s to %s" % (src_gitconfig_path, dst_gitconfig_path))
 
     
 
