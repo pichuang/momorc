@@ -94,7 +94,7 @@ def git_branch(env):
         if linux_command(cmd) != 0:
             logger.info("Can't checkout to %s" % new_branch_name)
         else:
-            logger.info("Checkout to %s" + new_branch_name) 
+            logger.info("Checkout to %s" % new_branch_name) 
     else:
         logger.info("You need install git first.")
         sys.exit()
