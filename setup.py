@@ -43,36 +43,34 @@ class enviroment():
         logger.debug("home path: %s" % home_path)
         return home_path
 
-def install_gitconfig(env):
-    logger.info("Install .gitconfig")
+def install_rc(env, filename):
+    logger.info("Install %s" % filename)
+    src_path = env.pwd() + "/" + filename
+    dst_path = env.home_path() + "/" + filename
+    logger.debug("%s path: %s" % (filename, src_path))
 
-    src_gitconfig_path = env.pwd() + "/.gitconfig"
-    dst_gitconfig_path = env.home_path() +"/.gitconfig"
-    logger.debug(".gitconfig path: %s" % src_gitconfig_path)
-    
     '''
-    Check .gitconfig is symbolic link?
+    Check file is symbolic link?
     '''
-    if os.path.exists(dst_gitconfig_path) == True:
-        if os.path.islink(dst_gitconfig_path) == True:
-            logger.info(".gitconfig is exists")
+    if os.path.exists(dst_path) == True:
+        if os.path.islink(dst_path) == True:
+            logger.info("%s is exists" % filename)
             pass
-        elif os.path.isfile(dst_gitconfig_path) == True:
-            logger.debug(".gitconfig backup")
-            gitconfig_backup = dst_gitconfig_path + ".backup"
-            os.rename(dst_gitconfig_path, gitconfig_backup)
+        elif os.path.isfile(dst_path) == True:
+            logger.debug("%s backup" % filename)
+            file_backup = dst_path + ".backup"
+            os.rename(dst_path, file_backup)
         else:
-            logger.debug(".gitconfig Somthing wrong")
+            logger.debug("%s somthing wrong" % filename)
     else:
-        os.symlink(src_gitconfig_path, dst_gitconfig_path)
-        logger.info(".gitconfig install from %s to %s" % (src_gitconfig_path, dst_gitconfig_path))
-
-    
+        os.symlink(src_path, dst_path)
+        logger.info("%s install from %s to %s" % (filename, src_path, dst_path))
 
 def main():
     logger.info("Start install pichuangrc")
     env = enviroment()
-    install_gitconfig(env)
+    install_rc(env, filename=".gitconfig")
+    #install_rc(env, filename=".vimrc")
     logger.info("Finish install pichuangrc")
 
 if __name__ == '__main__':
