@@ -52,7 +52,8 @@ class enviroment():
 
     def is_git(self):
         cmd = 'whereis git'
-        retcode = subprocess.call(cmd, shell=True, stdout=FNULL, stderr=subprocess.STDOUT)
+        hide_output = open(os.devnull, 'w')
+        retcode = subprocess.call(cmd, shell=True, stdout=hide_output, stderr=subprocess.STDOUT)
         if retcode != 0:
             logger.debug("code %s" % retcode)
             return False
@@ -86,9 +87,10 @@ def git_branch(env):
     new_branch_name = env.hostname()
     if env.is_git() == True:
         cmd = "git checkout -b " + new_branch_name
-        retcode = subprocess.call(cmd, shell=True, stdout=FNULL, stderr=subprocess.STDOUT)
+        hide_output = open(os.devnull, 'w')
+        retcode = subprocess.call(cmd, shell=True, stdout=hide_output, stderr=subprocess.STDOUT)
         if retcode != 0:
-            logger.info("Can't checkout to %s" + new_branch_name)
+            logger.info("Can't checkout to %s" % new_branch_name)
         else:
             logger.info("Checkout to %s" + new_branch_name) 
     else:
