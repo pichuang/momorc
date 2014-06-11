@@ -6,6 +6,8 @@ import logging
 import sys
 import platform
 import os
+import shlex
+import subprocess
 from os.path import expanduser
 
 logger = logging.getLogger('pichuangrc')
@@ -43,6 +45,20 @@ class enviroment():
         logger.debug("home path: %s" % home_path)
         return home_path
 
+    def hostname(self):
+        hostname = platform.node()
+        logger.debug("homename: %s" % homename)
+        return hostname
+
+    def is_git(self):
+        cmd = 'whereis git'
+        retcode = subprocess.call(cmd, shell=True)
+        if retcode != 0:
+            logger.debug("code %s" % retcode)
+            return False
+        else:
+            return True
+
 def install_rc(env, filename):
     logger.info("Install %s" % filename)
     src_path = env.pwd() + "/" + filename
@@ -66,9 +82,23 @@ def install_rc(env, filename):
         os.symlink(src_path, dst_path)
         logger.info("%s install from %s to %s" % (filename, src_path, dst_path))
 
+def git_branch(env):
+    new_branch_name = env.hostname()
+    if env.is_git() == True:
+        cmd = "git checkout -b " + new_branch_name
+        retcode = subprocess.call(cmd, shell=True)
+        if retcode != 0:
+            logger.info("Can't checkout to %s" + new_branch_name)
+        else:
+            logger.info("Checkout to %s" + new_branch_name) 
+    else:
+        logger.info("You need install git first.")
+        sys.exit()
+
 def main():
     logger.info("Start install pichuangrc")
     env = enviroment()
+    git_branch(env)
     install_rc(env, filename=".gitconfig")
     install_rc(env, filename=".vimrc")
     logger.info("Finish install pichuangrc")
