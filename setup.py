@@ -17,6 +17,10 @@ LEVELS = {'debug': logging.DEBUG,
 ch = logging.StreamHandler()
 logger.addHandler(ch)
 
+'''
+Add you don't want install filename
+'''
+IGNORE_LIST = ["README.md", "setup.py", "test.py", ".git", "__pycache__" ]
 
 class enviroment():
     def __init__(self):
@@ -57,7 +61,17 @@ class enviroment():
             return False
         else:
             return True
-
+    def install_file_list(self):
+        dirs = os.listdir(".")
+        INSTALL_LIST = []
+        for file in dirs:
+            if file in IGNORE_LIST:
+              pass
+            else:
+              INSTALL_LIST.append(file)
+        logger.debug(INSTALL_LIST)
+        return INSTALL_LIST
+        
 def linux_command(cmd):
     hide_output = open(os.devnull, 'w')
     retcode = subprocess.call(cmd, shell=True, stdout=hide_output, stderr=subprocess.STDOUT)
@@ -87,6 +101,7 @@ def install_rc(env, filename):
         logger.info("%s install from %s to %s" % (filename, src_path, dst_path))
 
 def git_branch(env):
+    #XXX: exists branch problem
     new_branch_name = env.hostname()
     if env.is_git() == True:
         cmd = "git checkout -b " + new_branch_name
@@ -103,11 +118,8 @@ def main():
     logger.info("Start install pichuangrc")
     env = enviroment()
     git_branch(env)
-    install_rc(env, filename=".gitconfig")
-    install_rc(env, filename=".vimrc")
-    install_rc(env, filename=".screenrc")
-    install_rc(env, filename=".bashrc")
-    install_rc(env, filename=".git-prompt.sh")
+    for install_file in env.install_file_list():
+        install_rc(env, filename=install_file)
     logger.info("Finish install pichuangrc")
 
 if __name__ == '__main__':
