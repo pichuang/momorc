@@ -107,6 +107,7 @@ def main():
     install_rc(env, filename=".vimrc")
     install_rc(env, filename=".screenrc")
     install_rc(env, filename=".bashrc")
+    install_rc(env, filename=".git-prompt.sh")
     logger.info("Finish install pichuangrc")
 
 if __name__ == '__main__':
