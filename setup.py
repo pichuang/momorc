@@ -19,8 +19,9 @@ logger.addHandler(ch)
 
 '''
 Add you don't want install filename
+TODO: Maybe need a file handle this
 '''
-IGNORE_LIST = ["README.md", "setup.py", "test.py", ".git", "__pycache__" ]
+IGNORE_LIST = ["README.md", "setup.py", "test.py", ".git", "__pycache__", ".gitignore" ]
 
 class enviroment():
     def __init__(self):
