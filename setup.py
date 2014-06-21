@@ -80,7 +80,7 @@ def linux_command(cmd):
     return retcode
 
 def install_rc(env, filename):
-    logger.info("Install %s" % filename)
+    logger.info("=> Install %s" % filename)
     src_path = env.pwd() + "/" + filename
     dst_path = env.home_path() + "/" + filename
     logger.debug("%s path: %s" % (filename, src_path))
@@ -89,17 +89,17 @@ def install_rc(env, filename):
     Check file is symbolic link?
     '''
     if os.path.islink(dst_path) == True:
-        logger.info("%s is exists" % filename)
+        logger.info("==> %s is exists\n" % filename)
         pass
     elif os.path.isfile(dst_path) == True:
-        logger.debug("%s backup from %s to %s" % (filename, src_path, dst_path))
+        logger.debug("==> %s backup from %s to %s\n" % (filename, src_path, dst_path))
         file_backup = dst_path + ".backup"
         os.rename(dst_path, file_backup)
         os.symlink(src_path, dst_path)
-        logger.info("%s install from %s to %s" % (filename, src_path, dst_path))
+        logger.info("==> %s install from %s to %s\n" % (filename, src_path, dst_path))
     else:
         os.symlink(src_path, dst_path)
-        logger.info("%s install from %s to %s" % (filename, src_path, dst_path))
+        logger.info("==> %s install from %s to %s\n" % (filename, src_path, dst_path))
 
 def git_branch(env):
     #XXX: exists branch problem
@@ -108,20 +108,20 @@ def git_branch(env):
         cmd = "git checkout -b " + new_branch_name
         retcode = linux_command(cmd)
         if retcode != 0:
-            logger.info("Can't checkout to %s" % new_branch_name)
+            logger.debug("Can't checkout to %s" % new_branch_name)
         else:
-            logger.info("Checkout to %s" % new_branch_name) 
+            logger.info("==> Checkout to %s" % new_branch_name) 
     else:
         logger.info("You need install git first.")
         sys.exit()
 
 def main():
-    logger.info("Start install pichuangrc")
+    logger.info("=== Start install pichuangrc ===\n")
     env = enviroment()
     git_branch(env)
     for install_file in env.install_file_list():
         install_rc(env, filename=install_file)
-    logger.info("Finish install pichuangrc")
+    logger.info("=== Finish install pichuangrc ===")
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
