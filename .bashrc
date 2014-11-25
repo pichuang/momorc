@@ -10,7 +10,7 @@
 # \033[0;39m - White
 
 TERM=xterm-256color
-PS1='\[\e[1;36m\]\t \[\e[01;33m\]\u\[\e[m\]@\h\[\e[0m\]:\[\e[01;34m\]\w\[\e[0m\] \[\e[0;31m\]$(__git_ps1 "(%s)")\e[0m\]\$'
+PS1='\[\e[1;36m\]\t \[\e[01;33m\]\u\[\e[m\]@\h\[\e[0m\]:\[\e[01;34m\]\w\[\e[0m\] \$'
 PATH=${PATH}
 EDITOR=vim
 HISTCONTROL=ignoreboth
