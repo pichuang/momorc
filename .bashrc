@@ -29,7 +29,7 @@ TERM=xterm-256color
 #export PS1="\n\[\033[1;37m\]\342\224\214($(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]\h'; else echo '\[\033[01;34m\]\u@\h'; fi)\[\033[1;37m\])\342\224\200(\$(get_exit_code)\[\033[1;37m\])\342\224\200(\[\033[1;34m\]\@ \d\[\033[1;37m\])\[\033[1;37m\]\n\342\224\224\342\224\200(\[\033[1;32m\]\w\[\033[1;37m\])\342\224\200(\[\033[1;32m\]\$(ls -1 | wc -l | sed 's: ::g') files, \$(ls -sh | head -n1 | sed 's/total //')b\[\033[1;37m\])\342\224\200\$(parse_git_branch)> \[\033[0m\]"
 
 #export PS1="\t \u@\h \W \$(parse_git_branch) \$(get_exit_code) \n$ "
-export PS1="\[\e[1;36m\]\t \[\e[01;33m\]\u\[\e[m\]@\h \w \$(parse_git_branch) \$(get_exit_code) \n$ "
+export PS1="\[\e[1;36m\]\t \[\e[01;33m\]\u\[\e[m\]@\h \$(get_exit_code) \w \$(parse_git_branch) \n$ "
 
 
 PATH=${PATH}
