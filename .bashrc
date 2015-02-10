@@ -47,10 +47,8 @@ if [[  `uname` =~ "Linux" ]] ; then
    alias pacman='pacman --color=auto'
    alias telnet='bug5 -up telnet -8L -8'
    alias grep='grep --color=auto'
-   alias fgrep='fgrep --color=auto'
-   alias egrep='egrep --color=auto'
    alias ..='cd .. && ll'
-   alias trs='trs {en=zh-TW}'
+   alias fuck='sudo $(history -p \!\!)'
 
 fi
 
