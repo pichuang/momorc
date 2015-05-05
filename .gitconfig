@@ -16,6 +16,6 @@
     ci = commit
     st = status
     br = branch
-    df = diff
+    di = diff
     clr = clean -fdx
     mg = merge
