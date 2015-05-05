@@ -18,3 +18,4 @@
     br = branch
     df = diff
     clr = clean -fdx
+    mg = merge
