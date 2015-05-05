@@ -1,18 +1,20 @@
 [user]
-	email = pichuang@cs.nctu.edu.tw
-	name = Roan Huang
+    email = pichuang@cs.nctu.edu.tw
+    name = Roan Huang
 [core]
-	editor = vim
+    editor = vim
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 [color]
-	status = auto
-	branch = auto
-	diff = auto
-	ui = true
+    status = auto
+    branch = auto
+    diff = auto
+    ui = true
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	co = checkout
-	ci = commit
-	st = status
-	br = branch
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    df = diff
+    clr = clean -fdx
