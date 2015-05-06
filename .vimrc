@@ -50,7 +50,6 @@ highlight CursorLine cterm=NONE ctermbg=24
 set cursorcolumn
 highlight CursorColumn cterm=NONE ctermbg=24
 
-
 set nobackup
 set nonumber
 set background=dark
@@ -106,16 +105,16 @@ map <PageDown> <C-d>
 imap <PageUp> <C-o><C-u>
 imap <PageDown> <C-o><C-d>
 
-set laststatus=2            "laststatus: show the line below                    
-set statusline=%4*%<\ %1*[%F]                                                   
-set statusline+=%4*\ %5*[%{&fileencoding},  "encoding                           
-set statusline+=%{&fileformat}]%m           "file format                        
-set statusline+=%4*%=\ %6*%y%4*\ %3*%l%4*,\ %3*%c%4*\ \<\ %2*%P%4*\ \>          
-highlight User1 ctermfg=red                                                     
-highlight User2 term=underline cterm=underline ctermfg=green                    
-highlight User3 term=underline cterm=underline ctermfg=yellow                   
-highlight User4 term=underline cterm=underline ctermfg=white                    
-highlight User5 ctermfg=cyan                                                    
+set laststatus=2            "laststatus: show the line below
+set statusline=%4*%<\ %1*[%F]
+set statusline+=%4*\ %5*[%{&fileencoding},  "encoding
+set statusline+=%{&fileformat}]%m           "file format
+set statusline+=%4*%=\ %6*%y%4*\ %3*%l%4*,\ %3*%c%4*\ \<\ %2*%P%4*\ \>
+highlight User1 ctermfg=red
+highlight User2 term=underline cterm=underline ctermfg=green
+highlight User3 term=underline cterm=underline ctermfg=yellow
+highlight User4 term=underline cterm=underline ctermfg=white
+highlight User5 ctermfg=cyan
 highlight User6 ctermfg=white
 
 
@@ -175,4 +174,6 @@ nnoremap <LEADER><F9> :call SetExec()<CR>
 nnoremap <F9> :call Run()<CR>
 nnoremap <LEADER><F10> :call SetArgs()<CR>
 
+set list listchars=tab:❘_,trail:·
+hi SpecialKey ctermbg=red ctermfg=red guibg=red guifg=red
 

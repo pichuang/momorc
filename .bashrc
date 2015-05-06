@@ -58,6 +58,7 @@ set meta-flag on
 set input-meta on
 set convert-meta off
 set output-meta on
+set bell-stype none
 
 set filec
 set autolist                # tab completing
