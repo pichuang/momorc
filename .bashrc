@@ -1,4 +1,4 @@
-# Set the following to make all x terminals have proper PS1 and PS2
+#Set the following to make all x terminals have proper PS1 and PS2
 # \033[0;30m - Black
 # \033[0;31m - Red
 # \033[0;32m - Green
@@ -12,6 +12,31 @@ export TERM=xterm-256color
 export PS1='\[\e[1;36m\]\t \[\e[01;33m\]\u\[\e[m\]@\h\[\e[0m\]:\[\e[01;34m\]\w\n\[\e[0m\]>> '
 PATH=${PATH}:${HOME}/.composer/vendor/bin
 export EDITOR=/usr/bin/vim
+
+function get_exit_code {
+    case "$?" in
+        0) echo -e "\033[1;34m$?\033[0m" ;;
+        *) echo -e "\033[1;31m$?\033[0m" ;;
+    esac
+}
+
+function parse_git_dirty {
+    [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
+}
+
+function parse_git_branch {
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/(\1$(parse_git_dirty))/"
+}
+
+
+TERM=xterm-256color
+
+export PS1="\[\e[1;36m\]\t \[\e[01;33m\]\u\[\e[m\]@\h \$(get_exit_code) \w \$(parse_git_branch) \n$ "
+
+export PS4='Line ${LINENO}: '
+
+PATH=${PATH}
+EDITOR=vim
 HISTCONTROL=ignoreboth
 HISTSIZE=1000
 HISTFILESIZE=2000
@@ -28,6 +53,7 @@ alias hn="history -n ~/.histfile/last"
 alias hc="history -c"
 
 if [[  `uname` =~ "Linux" ]] ; then
+
    alias ls='ls --color=auto'
    alias ll='ls -alF'
    alias la='ls -A'
@@ -39,6 +65,8 @@ if [[  `uname` =~ "Linux" ]] ; then
    alias telnet='bug5 -up telnet -8L -8'
    alias cc='mosh pichuang@linux2.cs.nctu.edu.tw'
    alias fuck='sudo $(history -p \!\!)'
+   alias ..='cd .. && ll'
+   alias pc='python setup.py build install'
 fi
 
 
@@ -54,11 +82,5 @@ set autologout=0
 
 [[ -s "$HOME/.inputrc" ]] && export INPUTRC="$HOME/.inputrc"
 [[ -s "$HOME/.bash_aliases" ]] && . "$HOME/.bash_aliases" # Load bash_profile
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 [[ -s "$HOME/ENV/bin/activate" ]] && . "$HOME/ENV/bin/activate" # Load virtualenv
 [[ -f "/usr/share/bash-completion/bash_completion" ]] && source "/usr/share/bash-completion/bash_completion" #bash-completion
-
-if [ -n "$SSH_TTY" ] ; then
-echo $SSH_TTY
-[[ -r "$HOME/etc/motd" ]] && cat $HOME/etc/motd
-fi

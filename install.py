@@ -10,7 +10,7 @@ import shlex
 import subprocess
 from os.path import expanduser
 
-logger = logging.getLogger('pichuangrc')
+logger = logging.getLogger('momorc')
 LEVELS = {'debug': logging.DEBUG,
           'info': logging.INFO,
           'warning': logging.WARNING}
@@ -21,7 +21,7 @@ logger.addHandler(ch)
 Add you don't want install filename
 TODO: Maybe need a file handle this
 '''
-IGNORE_LIST = ["README.md", "setup.py", "test.py", ".git", "__pycache__", ".gitignore" ]
+IGNORE_LIST = ["README.md", "install.py", "test.py", ".git", "__pycache__", ".gitignore" ]
 
 class enviroment():
     def __init__(self):
@@ -116,12 +116,12 @@ def git_branch(env):
         sys.exit()
 
 def main():
-    logger.info("=== Start install pichuangrc ===\n")
+    logger.info("=== Start install MoMorc ===\n")
     env = enviroment()
     git_branch(env)
     for install_file in env.install_file_list():
         install_rc(env, filename=install_file)
-    logger.info("=== Finish install pichuangrc ===")
+    logger.info("=== Finish install MoMorc ===")
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
