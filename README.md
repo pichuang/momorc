@@ -11,8 +11,26 @@ Installation
 >
 > ./install.py
 
+momorc screen cheatsheat
+------------------------
+start new:
+
+    screen
+
+attach:
+
+    screen -rd
+
+list:
+
+    screen -ls
+
+prefix:
+
+    <ctrl+a>
+
 momorc tmux cheatsheat
-==========
+----------------------
 start new:
 
     tmux
@@ -50,7 +68,7 @@ Reload .tmux.conf
 
     :source-file ~/.tmux.conf
     
-    $  name session
+$  name session
 
 ## Windows (tabs)
 
