@@ -26,7 +26,7 @@ IGNORE_LIST = ["README.md", "install.py", "test.py", ".git", "__pycache__", ".gi
 class enviroment():
     def __init__(self):
         logger.debug("Get enviroment")
-    
+
     def os_system(self):
         system = platform.system()
         logger.debug("OS_VERSION: %s" % system)
@@ -72,7 +72,7 @@ class enviroment():
               INSTALL_LIST.append(file)
         logger.debug(INSTALL_LIST)
         return INSTALL_LIST
-        
+
 def linux_command(cmd):
     hide_output = open(os.devnull, 'w')
     retcode = subprocess.call(cmd, shell=True, stdout=hide_output, stderr=subprocess.STDOUT)
