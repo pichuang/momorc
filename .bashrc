@@ -74,11 +74,7 @@ set meta-flag on
 set input-meta on
 set convert-meta off
 set output-meta on
-<<<<<<< HEAD
-set bell-style none
-=======
 set bell-stype none
->>>>>>> 15d6ea20281148e711c9c3e6ccaf445148c19a86
 
 set filec
 set autolist                # tab completing
