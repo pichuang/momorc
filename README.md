@@ -64,11 +64,8 @@ Hit the prefix `ctrl+a`  and then:
 ## Sessions
 
 
-Reload .tmux.conf
-
-    :source-file ~/.tmux.conf
-    
-$  name session
+    r  reload ~/.tmux.conf
+    $  name session
 
 ## Windows (tabs)
 
