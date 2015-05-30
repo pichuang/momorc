@@ -16,9 +16,14 @@
     co = checkout
     ci = commit
     st = status
-    br = branch
+    br = branch -a
     di = diff
     clr = clean -fdx
     mg = merge
-[branch]  
-      autosetuprebase = always
+[branch]
+    autosetuprebase = always
+    sh = show
+    p = push
+    ro = remote -v
+[help]
+    autocorrect = 1
