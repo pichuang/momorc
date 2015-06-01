@@ -2,6 +2,11 @@ MoMorc
 ==========
 **Install  *.rc automatically with symbolic link**
 
+OS X requirements
+-----------------
+
+> brew install reattach-to-user-namespace
+
 Installation
 ------------
 
