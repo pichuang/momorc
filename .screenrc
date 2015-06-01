@@ -5,6 +5,7 @@ bell_msg "Bell in window %n^G"
 startup_message off
 caption always "%{wK} %=|%{Wb}%-w%{Yr}%n*%t%{Wb}%+w%{wK}|%= "
 hardstatus alwayslastline "%= %= %{Y}(%H) %{R}%e %{R} %l %{wb} %Y/%m/%d %c"
+cjkwidth off
 #termcapinfo xterm "Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm"
 #termcapinfo xterm-color "Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm"
 #defutf8 on
