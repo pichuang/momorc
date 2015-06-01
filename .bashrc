@@ -8,7 +8,7 @@
 # \033[0;36m - Light Blue
 # \033[0;37m - Grey
 # \033[0;39m - White
-export TERM=xterm-256color
+export TERM=screen-256color
 export PS1='\[\e[1;36m\]\t \[\e[01;33m\]\u\[\e[m\]@\h\[\e[0m\]:\[\e[01;34m\]\w\n\[\e[0m\]>> '
 PATH=${PATH}:${HOME}/.composer/vendor/bin
 export EDITOR=/usr/bin/vim
@@ -29,7 +29,6 @@ function parse_git_branch {
 }
 
 
-TERM=xterm-256color
 
 export PS1="\[\e[1;36m\]\t \[\e[01;33m\]\u\[\e[m\]@\h \$(get_exit_code) \w \$(parse_git_branch) \n$ "
 
