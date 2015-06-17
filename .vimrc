@@ -3,23 +3,23 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+"set rtp+=~/.vim/bundle/vundle/
+"call vundle#rc()
 " alternatively, pass a path where Vundle should install plugins
 "let path = '~/some/path/here'
 "call vundle#rc(path)
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/vundle'
+"Plugin 'gmarik/vundle'
 
 
 "Plugin 'fisadev/vim-debug.vim'
-Plugin 'motemen/git-vim'
-Plugin 'mhinz/vim-signify'
-Plugin 'scrooloose/syntastic'
-Plugin 'buffer-status-menu.vim'
-Plugin 'ctags.vim'
-Plugin 'cscope.vim'
+"Plugin 'motemen/git-vim'
+"Plugin 'mhinz/vim-signify'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'buffer-status-menu.vim'
+"Plugin 'ctags.vim'
+"Plugin 'cscope.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between here and filetype plugin indent on.
@@ -68,8 +68,8 @@ highlight CursorColumn cterm=NONE ctermbg=24
 set nobackup
 set nonumber
 set background=dark
-syntax on   			" syntax highlighting
- 
+syntax on   " syntax highlighting
+
 set expandtab           " enter spaces when tab is pressed
 set textwidth=0       " break lines when line length increases
 set tabstop=4           " use 4 spaces to represent tab
@@ -78,7 +78,7 @@ set shiftwidth=4        " number of spaces to use for auto indent
 set autoindent          " copy indent from current line when starting a new line
 set backspace=indent,eol,start
 set ruler               " show line and column number
-set showcmd 			" show (partial) command in status lineime.sleep(1)
+set showcmd             " show (partial) command in status lineime.sleep(1)
 set paste
 
 
