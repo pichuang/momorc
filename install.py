@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
-#Maintainer: Roan Huang <pichuang@cs.nctu.edu.tw>
+# Maintainer: Roan Huang <pichuang@cs.nctu.edu.tw>
 
 import logging
 import sys
@@ -110,7 +110,7 @@ def git_branch(env):
         if retcode != 0:
             logger.debug("Can't checkout to %s" % new_branch_name)
         else:
-            logger.info("==> Checkout to %s" % new_branch_name) 
+            logger.info("==> Checkout to %s" % new_branch_name)
     else:
         logger.info("You need install git first.")
         sys.exit()
