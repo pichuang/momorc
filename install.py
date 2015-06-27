@@ -6,7 +6,6 @@ import logging
 import sys
 import platform
 import os
-import shlex
 import subprocess
 from os.path import expanduser
 
@@ -23,16 +22,18 @@ TODO: Maybe need a file handle this
 '''
 IGNORE_LIST = ["README.md", "install.py", "test.py", ".git", "__pycache__", ".gitignore" ]
 
-class enviroment():
+class Environment:
     def __init__(self):
         logger.debug("Get enviroment")
 
-    def os_system(self):
+    @staticmethod
+    def os_system():
         system = platform.system()
         logger.debug("OS_VERSION: %s" % system)
         return system
 
-    def os_distribution(self):
+    @staticmethod
+    def os_distribution():
         linux = platform.linux_distribution()[0]
         if linux == "":
             logger.debug("OS_Distribution: unknown")
@@ -40,38 +41,44 @@ class enviroment():
             logger.debug("OS_Distribution: %s" % linux)
         return linux
 
-    def pwd(self):
+    @staticmethod
+    def pwd():
         pwd = os.getcwd()
         logger.debug("pwd: %s" % pwd)
         return pwd
 
-    def home_path(self):
+    @staticmethod
+    def home_path():
         home_path = expanduser("~")
         logger.debug("home path: %s" % home_path)
         return home_path
 
-    def hostname(self):
+    @staticmethod
+    def hostname():
         hostname = platform.node()
         logger.debug("hostname: %s" % hostname)
         return hostname
 
-    def is_git(self):
+    @staticmethod
+    def is_git():
         cmd = 'whereis git'
         if linux_command(cmd) != 0:
             logger.debug("code %s" % linux_command(cmd))
             return False
         else:
             return True
-    def install_file_list(self):
+
+    @staticmethod
+    def install_file_list():
         dirs = os.listdir(".")
-        INSTALL_LIST = []
+        install_list = []
         for file in dirs:
             if file in IGNORE_LIST:
-              pass
+                pass
             else:
-              INSTALL_LIST.append(file)
-        logger.debug(INSTALL_LIST)
-        return INSTALL_LIST
+                install_list.append(file)
+        logger.debug(install_list)
+        return install_list
 
 def linux_command(cmd):
     hide_output = open(os.devnull, 'w')
@@ -88,10 +95,10 @@ def install_rc(env, filename):
     '''
     Check file is symbolic link?
     '''
-    if os.path.islink(dst_path) == True:
+    if os.path.islink(dst_path):
         logger.info("==> %s is exists\n" % filename)
         pass
-    elif os.path.isfile(dst_path) == True:
+    elif os.path.isfile(dst_path):
         logger.debug("==> %s backup from %s to %s\n" % (filename, src_path, dst_path))
         file_backup = dst_path + ".backup"
         os.rename(dst_path, file_backup)
@@ -104,7 +111,7 @@ def install_rc(env, filename):
 def git_branch(env):
     #XXX: exists branch problem
     new_branch_name = env.hostname()
-    if env.is_git() == True:
+    if env.is_git():
         cmd = "git checkout -b " + new_branch_name
         retcode = linux_command(cmd)
         if retcode != 0:
@@ -117,7 +124,7 @@ def git_branch(env):
 
 def main():
     logger.info("=== Start install MoMorc ===\n")
-    env = enviroment()
+    env = Environment()
     git_branch(env)
     for install_file in env.install_file_list():
         install_rc(env, filename=install_file)
