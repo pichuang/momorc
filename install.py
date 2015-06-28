@@ -73,9 +73,7 @@ class Environment:
         dirs = os.listdir(".")
         install_list = []
         for file in dirs:
-            if file in IGNORE_LIST:
-                pass
-            else:
+            if file not in IGNORE_LIST:
                 install_list.append(file)
         logger.debug(install_list)
         return install_list
