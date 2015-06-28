@@ -29,7 +29,7 @@ class Environment:
     @staticmethod
     def os_system():
         system = platform.system()
-        logger.debug("OS_VERSION: %s" % system)
+        logger.debug("OS_VERSION: {0}".format(system))
         return system
 
     @staticmethod
@@ -38,32 +38,32 @@ class Environment:
         if linux == "":
             logger.debug("OS_Distribution: unknown")
         else:
-            logger.debug("OS_Distribution: %s" % linux)
+            logger.debug("OS_Distribution: {0}".format(linux))
         return linux
 
     @staticmethod
     def pwd():
         pwd = os.getcwd()
-        logger.debug("pwd: %s" % pwd)
+        logger.debug("pwd: {0}".format(pwd))
         return pwd
 
     @staticmethod
     def home_path():
         home_path = expanduser("~")
-        logger.debug("home path: %s" % home_path)
+        logger.debug("home path: {0}".format(home_path))
         return home_path
 
     @staticmethod
     def hostname():
         hostname = platform.node()
-        logger.debug("hostname: %s" % hostname)
+        logger.debug("hostname: {0}".format(hostname))
         return hostname
 
     @staticmethod
     def is_git():
         cmd = 'whereis git'
         if linux_command(cmd) != 0:
-            logger.debug("code %s" % linux_command(cmd))
+            logger.debug("code {0}".format(linux_command(cmd)))
             return False
         else:
             return True
@@ -83,30 +83,30 @@ class Environment:
 def linux_command(cmd):
     hide_output = open(os.devnull, 'w')
     retcode = subprocess.call(cmd, shell=True, stdout=hide_output, stderr=subprocess.STDOUT)
-    logger.debug("%s execute get %s" % (cmd, retcode))
+    logger.debug("{0} execute get {1}".foramt(cmd, retcode))
     return retcode
 
 def install_rc(env, filename):
-    logger.info("=> Install %s" % filename)
+    logger.info("=> Install {0}".format(filename))
     src_path = env.pwd() + "/" + filename
     dst_path = env.home_path() + "/" + filename
-    logger.debug("%s path: %s" % (filename, src_path))
+    logger.debug("{0} path: {1}".format(filename, src_path))
 
     '''
     Check file is symbolic link?
     '''
     if os.path.islink(dst_path):
-        logger.info("==> %s is exists\n" % filename)
+        logger.info("==> {0} is exists\n".format(filename))
         pass
     elif os.path.isfile(dst_path):
-        logger.debug("==> %s backup from %s to %s\n" % (filename, src_path, dst_path))
+        logger.debug('==> {0} backup from {1} to {2}\n'.format(filename, src_path, dst_path))
         file_backup = dst_path + ".backup"
         os.rename(dst_path, file_backup)
         os.symlink(src_path, dst_path)
-        logger.info("==> %s install from %s to %s\n" % (filename, src_path, dst_path))
+        logger.info("==> {0} install from {1} to {2}\n".format(filename, src_path, dst_path))
     else:
         os.symlink(src_path, dst_path)
-        logger.info("==> %s install from %s to %s\n" % (filename, src_path, dst_path))
+        logger.info("==> {0} install from {1} to {2}\n".format(filename, src_path, dst_path))
 
 def git_branch(env):
     #XXX: exists branch problem
@@ -115,9 +115,9 @@ def git_branch(env):
         cmd = "git checkout -b " + new_branch_name
         retcode = linux_command(cmd)
         if retcode != 0:
-            logger.debug("Can't checkout to %s" % new_branch_name)
+            logger.debug("Can't checkout to {0}".format(new_branch_name))
         else:
-            logger.info("==> Checkout to %s" % new_branch_name)
+            logger.info("==> Checkout to {0}".format(new_branch_name))
     else:
         logger.info("You need install git first.")
         sys.exit()
