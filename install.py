@@ -111,18 +111,24 @@ def install_rc(env, filename):
 
 
 def git_branch(env):
-    # XXX: exists branch problem
+    # Check git branch exist or not
     new_branch_name = env.hostname()
     if env.is_git():
-        cmd = "git checkout -b " + new_branch_name
-        retcode = linux_command(cmd)
-        if retcode != 0:
-            logger.debug("Can't checkout to {0}".format(new_branch_name))
+        check_cmd = "git rev-parse --verify " + new_branch_name
+        if linux_command(check_cmd) != 0:
+            cmd = "git checkout -b " + new_branch_name
         else:
-            logger.info("==> Checkout to {0}".format(new_branch_name))
+            cmd = "git checkout " + new_branch_name
     else:
         logger.info("You need install git first.")
         sys.exit()
+
+    # Checkout to branch
+    retcode = linux_command(cmd)
+    if retcode != 0:
+        logger.debug("Can't checkout to {0}".format(new_branch_name))
+    else:
+        logger.info("==> Checkout to {0}".format(new_branch_name))
 
 
 def main():
