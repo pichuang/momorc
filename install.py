@@ -20,7 +20,8 @@ logger.addHandler(ch)
 Add you don't want install filename
 TODO: Maybe need a file handle this
 '''
-IGNORE_LIST = ["README.md", "install.py", "test.py", ".git", "__pycache__", ".gitignore" ]
+IGNORE_LIST = ["README.md", "install.py", "test.py", ".git", "__pycache__", ".gitignore"]
+
 
 class Environment:
     def __init__(self):
@@ -78,11 +79,13 @@ class Environment:
         logger.debug(install_list)
         return install_list
 
+
 def linux_command(cmd):
     hide_output = open(os.devnull, 'w')
     retcode = subprocess.call(cmd, shell=True, stdout=hide_output, stderr=subprocess.STDOUT)
-    logger.debug("{0} execute get {1}".foramt(cmd, retcode))
+    logger.debug("{0} execute get {1}".format(cmd, retcode))
     return retcode
+
 
 def install_rc(env, filename):
     logger.info("=> Install {0}".format(filename))
@@ -106,8 +109,9 @@ def install_rc(env, filename):
         os.symlink(src_path, dst_path)
         logger.info("==> {0} install from {1} to {2}\n".format(filename, src_path, dst_path))
 
+
 def git_branch(env):
-    #XXX: exists branch problem
+    # XXX: exists branch problem
     new_branch_name = env.hostname()
     if env.is_git():
         cmd = "git checkout -b " + new_branch_name
@@ -120,6 +124,7 @@ def git_branch(env):
         logger.info("You need install git first.")
         sys.exit()
 
+
 def main():
     logger.info("=== Start install MoMorc ===\n")
     env = Environment()
@@ -127,6 +132,7 @@ def main():
     for install_file in env.install_file_list():
         install_rc(env, filename=install_file)
     logger.info("=== Finish install MoMorc ===")
+
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
