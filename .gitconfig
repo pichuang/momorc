@@ -1,6 +1,6 @@
 [user]
     email = pichuang@cs.nctu.edu.tw
-    name = Roan Huang
+    name = Phil Huang
 [core]
     editor = vim
 [merge]
@@ -28,4 +28,4 @@
 [help]
     autocorrect = 1
 [push]
-	default = simple
+    default = simple
