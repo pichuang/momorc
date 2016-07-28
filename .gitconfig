@@ -1,9 +1,9 @@
 [user]
-    email = pichuang@cs.nctu.edu.tw
+    email = phil_huang@edge-core.com
     name = Phil Huang
 [core]
     editor = vim
-	excludesfile = /Users/roan/.gitignore_global
+    excludesfile = /Users/roan/.gitignore_global
 [merge]
     tool = vimdiff
 [color]
