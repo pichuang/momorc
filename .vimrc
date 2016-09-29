@@ -148,6 +148,5 @@ set nu
 
 " save as sudo
 ca w!! w !sudo tee "%"
-set list listchars=tab:❘_,trail:·
 hi SpecialKey ctermbg=red ctermfg=red guibg=red guifg=red
 set bg=dark

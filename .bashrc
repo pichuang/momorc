@@ -12,6 +12,7 @@ export TERM=screen-256color
 export PS1='\[\e[1;36m\]\t \[\e[01;33m\]\u\[\e[m\]@\h\[\e[0m\]:\[\e[01;34m\]\w\n\[\e[0m\]>> '
 PATH=${PATH}:${HOME}/.composer/vendor/bin
 export EDITOR=/usr/bin/vim
+export LC_ALL=C
 
 function get_exit_code {
     case "$?" in
