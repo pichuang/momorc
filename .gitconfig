@@ -3,7 +3,6 @@
     name = Phil Huang
 [core]
     editor = vim
-    excludesfile = /Users/roan/.gitignore_global
 [merge]
     tool = vimdiff
 [color]
