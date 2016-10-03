@@ -12,7 +12,7 @@ export TERM=screen-256color
 export PS1='\[\e[1;36m\]\t \[\e[01;33m\]\u\[\e[m\]@\h\[\e[0m\]:\[\e[01;34m\]\w\n\[\e[0m\]>> '
 PATH=${PATH}:${HOME}/.composer/vendor/bin
 export EDITOR=/usr/bin/vim
-export LC_ALL=C
+export LC_TIME=en_US.UTF-8
 
 function get_exit_code {
     case "$?" in
@@ -62,11 +62,8 @@ if [[  `uname` =~ "Linux" ]] ; then
    alias grep='grep --color=auto'
    alias fgrep='fgrep --color=auto'
    alias egrep='egrep --color=auto'
-   alias telnet='bug5 -up telnet -8L -8'
-   alias cc='mosh pichuang@linux2.cs.nctu.edu.tw'
    alias fuck='sudo $(history -p \!\!)'
    alias ..='cd .. && ll'
-   alias pc='python setup.py build install'
 fi
 
 
