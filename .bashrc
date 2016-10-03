@@ -13,6 +13,7 @@ export PS1='\[\e[1;36m\]\t \[\e[01;33m\]\u\[\e[m\]@\h\[\e[0m\]:\[\e[01;34m\]\w\n
 PATH=${PATH}:${HOME}/.composer/vendor/bin
 export EDITOR=/usr/bin/vim
 export LC_TIME=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 function get_exit_code {
     case "$?" in
