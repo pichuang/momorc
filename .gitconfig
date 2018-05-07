@@ -1,8 +1,9 @@
 [user]
-    email = phil_huang@edge-core.com
+    email = phil.huang@redhat.com
     name = Phil Huang
 [core]
     editor = vim
+	excludesfile = /Users/roan/.gitignore
 [merge]
     tool = vimdiff
 [color]
@@ -31,3 +32,9 @@
     default = simple
 [gitreview]
     username = pichuang
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
