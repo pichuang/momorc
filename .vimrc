@@ -152,5 +152,6 @@ hi SpecialKey ctermbg=red ctermfg=red guibg=red guifg=red
 set bg=dark
 
 " Show Whitespace and Tab
-set listchars=eol:$,tab:>.,trail:~,extends:>,precedes:<
-set list
+highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$\| \+\ze\t\+\|\t\+\zs \+/
+
