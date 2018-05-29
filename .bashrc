@@ -74,9 +74,3 @@ set autologout=0
 
 [[ -s "$HOME/.bash_aliases" ]] && . "$HOME/.bash_aliases" # Load bash_profile
 [[ -f "/usr/share/bash-completion/bash_completion" ]] && source "/usr/share/bash-completion/bash_completion" #bash-completion
-
-export ONOS_ROOT=~/onos
-source ~/onos/tools/dev/bash_profile
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-export ONOS_CELL=trellis # Change your cell name
-cell $ONOS_CELL
