@@ -31,7 +31,13 @@ PATH=${PATH}:${HOME}/.composer/vendor/bin
 export EDITOR=/usr/bin/vim
 export LC_TIME=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export PS1="\[\e[1;36m\]\t \[\e[01;33m\]\u\[\e[m\]@\h \$(get_exit_code) \w \$(parse_git_branch) \n$ "
+
+if [[ $EUID -eq 0 ]];then
+    export PS1="\[\e[1;36m\]\t \[\e[01;31m\]\u\[\e[m\]@\h \$(get_exit_code) \w \$(parse_git_branch) \n$ "
+else
+    export PS1="\[\e[1;36m\]\t \[\e[01;33m\]\u\[\e[m\]@\h \$(get_exit_code) \w \$(parse_git_branch) \n$ "
+fi
+
 export PS4='Line ${LINENO}: '
 export HISTCONTROL=ignoreboth
 export HISTSIZE=1000
