@@ -79,6 +79,8 @@ Hit the prefix `ctrl+a`  and then:
     f  find window
     ,  name window
     &  kill window
+    n  next window
+    p  previous window
 
 ## <a name="ResizePane"></a>Resize pane
 
@@ -89,19 +91,16 @@ Hit the prefix `ctrl+a`  and then:
 
 ## <a name="PanesSplits"></a>Panes (splits)
 
-    %  vertical split
     _  vertical split
-    "  horizontal split
     |  horizontal split
     
+    "  Change the panes size
     o  swap panes
     q  show pane numbers
     x  kill pane
     +  break pane into window (e.g. to select text by mouse to copy)
+    z  Zoom-in/out pane zoom
     -  restore pane from window
-    ⍽  space - toggle between layouts
-    q  Show pane numbers, when the numbers show up type the key to goto that pane)
-    z  toggle pane zoom
 
 ## Misc
 
@@ -131,37 +130,36 @@ exit copy mode:
 
 else:
 
-    Function                vi             emacs
-    Back to indentation     ^              M-m
-    Clear selection         Escape         C-g
-    Copy selection          Enter          M-w
-    Cursor down             j              Down
-    Cursor left             h              Left
-    Cursor right            l              Right
+    Function                vi        
+    Back to indentation     ^         
+    Clear selection         Escape    
+    Copy selection          Enter     
+    Cursor down             j         
+    Cursor left             h         
+    Cursor right            l         
     Cursor to bottom line   L
-    Cursor to middle line   M              M-r
-    Cursor to top line      H              M-R
-    Cursor up               k              Up
-    Delete entire line      d              C-u
-    Delete to end of line   D              C-k
-    End of line             $              C-e
-    Goto line               :              g
-    Half page down          C-d            M-Down
-    Half page up            C-u            M-Up
-    Next page               C-f            Page down
-    Next word               w              M-f
-    Paste buffer            p              C-y
-    Previous page           C-b            Page up
-    Previous word           b              M-b
-    Quit mode               q              Escape
-    Scroll down             C-Down or J    C-Down
-    Scroll up               C-Up or K      C-Up
-    Search again            n              n
-    Search backward         ?              C-r
-    Search forward          /              C-s
-    Start of line           0              C-a
-    Start selection         Space          C-Space
-    Transpose chars                        C-t
+    Cursor to middle line   M         
+    Cursor to top line      H         
+    Cursor up               k         
+    Delete entire line      d         
+    Delete to end of line   D         
+    End of line             $         
+    Goto line               :         
+    Half page down          C-d       
+    Half page up            C-u       
+    Next page               C-f       
+    Next word               w         
+    Paste buffer            p         
+    Previous page           C-b       
+    Previous word           b         
+    Quit mode               q         
+    Scroll down             C-Down or J  
+    Scroll up               C-Up or K    
+    Search again            n        
+    Search backward         ?        
+    Search forward          /        
+    Start of line           0       
+    Start selection         Space   
 
 Reference
 ---------
